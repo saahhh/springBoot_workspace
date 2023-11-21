@@ -1,0 +1,6 @@
+package com.kh.spring_project_chap1.web;
+
+public class NewFileController {
+	//html, jsp, view 공간과 db를 연결하는 역할
+	//파일경로를 설정할 때 항상 run하는 java파일 밑에다가 파일 하위 폴더에다가 설정해준다
+}

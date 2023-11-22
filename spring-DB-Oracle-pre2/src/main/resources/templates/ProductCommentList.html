@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>ProductCommentList</title>
+</head>
+<body>
+	<h1 th:each="productComment : ${productcomments}"></h1>
+	<table>
+		<thead>
+			<tr>
+				<th>댓글아이디</th>
+				<th>상품아이디</th>
+				<th>작성자</th>
+				<th>댓글내용</th>
+				<th>작성일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="productComment : ${productcomments}">
+				<td th:text="${productComment.comment_id}"></td>
+				<td th:text="${productComment.product_id}"></td>
+				<td th:text="${productComment.commenter_name}"></td>
+				<td th:text="${productComment.comment_text}"></td>
+				<td th:text="${productComment.comment_date}"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+</body>
+</html>

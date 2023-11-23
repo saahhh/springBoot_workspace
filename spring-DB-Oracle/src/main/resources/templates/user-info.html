@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>아이디 하나만 가지고오기</title>
+</head>
+<body>
+	<h1>getUserById</h1>
+	<div th:if="${user}">
+		<p th:text="${user.mno}"></p>
+		<p th:text="${user.name}"></p>
+		<p th:text="${user.email}"></p>
+		<p th:text="${user.birth}"></p>	
+	</div>
+
+</body>
+</html>

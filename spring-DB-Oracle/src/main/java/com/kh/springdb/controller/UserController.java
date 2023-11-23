@@ -37,7 +37,7 @@ public class UserController {
 /*
 @PathVariable : 경로에 대한 변수를 메서드의 매개변수로 받을 때 사용
 사용법 : @PathVariable int id
-{id}
+	   {id}
 
 
 

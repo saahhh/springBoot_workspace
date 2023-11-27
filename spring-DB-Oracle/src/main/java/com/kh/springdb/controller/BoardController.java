@@ -36,7 +36,7 @@ public class BoardController {
 		return "board-detail";
 	}
 	
-	//@GetMapping을 사용해서 게시글 작성하는 html로 이동한 후 
+	//@'Get' Mapping을 사용해서 게시글 작성하는 html로 이동한 후 
 	@GetMapping("/create") //HTTP GET요청이 /create 라는 경로로 들어올 때 호출된다
 	public String displayCreateForm(Model model) { //Model이라는 객체를 매개변수로 받아서 templates(view)으로 데이터를 전달할 수 있음
 		model.addAttribute("board", new Board());
@@ -45,8 +45,8 @@ public class BoardController {
 		
 	}
 	
-	//@PostMapping을 사용해서 작성해놓은 insert HTML form을 가져온다
-	@PostMapping("create")
+	//@'Post' Mapping을 사용해서 작성해놓은 insert HTML form을 가져온다
+	@PostMapping("/create")
 	public String createBoard(@ModelAttribute Board board) {
 		boardService.insertBoard(board);
 		return "redirect:/boards"; //글이 작성된 후 돌아갈 템플릿 작성
@@ -75,7 +75,8 @@ public class BoardController {
 	 	컨트롤러에서 뷰로 데이터를 전달할 때 사용하는 인터페이스
 	 	컨트롤러에 있는 메서드에서 매개변수로 Model를 선언하면 Get에 추가한 데이터는 자동으로 뷰에 전달됨
 	 	select 에서 DB에서 담겨온 데이터는 자동으로 모델에 담겨져 View(html)파일로 전달되는 것이다.
-	 @ModleAttribute 클래스이름 클래스를대신할변수명
+	 	
+	 @ModelAttribute 클래스이름 클래스를대신할변수명
 	 	폼 데이터나 URL 경로에서 전달된 데이터를 객체에 넣어줄 때 사용한다
 	 	클라이언트에서 전송한 데이터를 객체로 값을 넣어주고 컨트롤러에서 사용할 수 있도록 해주는 것
 	 	전달된 데이터는 mapper를 통해 db에 저장된다.	 
@@ -89,5 +90,12 @@ public class BoardController {
 		
 	}
 	
+	//게시물 모두 삭제
+	@GetMapping("/delete-all-boards")
+	public String deleteAllBoards() {
+		boardService.deleteAllBoards();
+		return "redirect:/boards";
+		
+	}
 	
 }

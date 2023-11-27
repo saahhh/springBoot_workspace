@@ -48,4 +48,8 @@
 	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM BOARD WHERE BOARD_ID = #{boardId}
 	</delete>
+	
+	<delete id="deleteAllBoards">
+		DELETE FROM BOARD
+	</delete>
 </mapper>

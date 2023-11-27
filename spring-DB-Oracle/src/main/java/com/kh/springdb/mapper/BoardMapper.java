@@ -23,4 +23,6 @@ public interface BoardMapper {
 	//게시물 삭제하기
 	void deleteBoard(int boardId);
 	
+	//게시물 모두 삭제하기
+	void deleteAllBoards();
 }

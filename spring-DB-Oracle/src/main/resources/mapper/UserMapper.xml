@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
 <mapper namespace="com.kh.springdb.mapper.UserMapper">
 	<!-- 전체 조회 -->
 	<select id="getAllUsers" resultType="com.kh.springdb.model.User">
@@ -11,7 +11,38 @@
 	<!-- 아이디 1회 조회 -->
 	<!-- #은 myBatis에서 지정한 형식 -->
 	<select id="getUserById" parameterType="int" resultType="com.kh.springdb.model.User">
-		SELECT * FROM MEMBERINFO WHERE MNO = #{id}
+		SELECT * FROM MEMBERINFO WHERE MNO = #{mno}
 	</select>
+	
+	<!-- 회원가입 하기 위한 insert 구문 -->
+	<insert id="insertUser"  parameterType="com.kh.springdb.model.User">
+		INSERT INTO MEMBERINFO (MNO, MNAME, MEMAIL, MBIRTH)
+		VALUES (#{mno}, #{mname}, #{memail}, #{mbirth})
+	</insert>
+	
+    <select id="loginUser" resultType="com.kh.springdb.model.User">
+        SELECT * FROM MEMBERINFO WHERE MEMAIL = #{memail}
+    </select>
 
+    <select id="loginByMnameAndMemail" resultMap="com.kh.springdb.model.User">
+        SELECT * FROM MEMBERINFO WHERE MNAME = #{mname} AND MEMAIL = #{memail}
+    </select>
+
+	<!-- 사용자 정보 업데이트 -->
+	<update id="updateUser" parameterType="com.kh.springdb.model.User">
+		UPDATE MEMBERINFO 
+		SET 
+			MNAME = #{mname), 
+			MEMAIL = #{memail}
+		WHERE
+			MNO = #{mno}
+		
+	</update>
+	
+	<!-- 사용자 삭제하는 CRUD 중 delete -->
+	<!-- parameterType="int" 처럼 번호 하나로 삭제할 땐 int로 대체 가능 -->
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM MEMBERINFO WHERE MNO = #{mno}
+	</delete>
 </mapper>
+

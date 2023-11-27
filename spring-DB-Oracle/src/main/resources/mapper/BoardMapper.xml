@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.springdb.mapper.BoardMapper">
+	<resultMap id="BoardResultMap" type="com.kh.springdb.model.Board">
+	
+		<id property="boardId" column="board_id"/>
+		
+		<!--<id></id> = <id/>
+			<result></result> = <result/>  -->
+			
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="author" column="author"/>
+		
+	</resultMap>
+	
+	<!-- 게시판에서 전체 목록 불러오기 -->
+	<select id="getAllBoards" resultMap="BoardResultMap">
+		SELECT * FROM BOARD	
+	</select>
+	
+	<!-- 게시판에서 게시물 1개 상세보기 -->
+	<select id="getBoardById" parameterType="int" resultMap="BoardResultMap">
+		SELECT * FROM BOARD WHERE BOARD_ID = #{boardId}
+	</select>
+	
+	<!-- 게시물 작성하기 -->
+	<insert id="insertBoard" parameterType="com.kh.springdb.model.Board">
+		INSERT INTO BOARD (board_id, title, content, author)
+		VALUES (#{boardId}, #{title}, #{content}, #{author})	
+	
+	</insert>
+	
+	<!-- 게시물 수정하기 -->
+	<update id="updateBoard" parameterType="com.kh.springdb.model.Board">
+		UPDATE 
+			BOARD 
+		SET
+			TITLE = #{title},
+			CONTENT = #{content},
+			AUTHOR = #{author}
+		WHERE 
+			BOARD_ID = #{boardId}
+	</update>
+	
+	<!-- 게시물 삭제하기 -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM BOARD WHERE BOARD_ID = #{boardId}
+	</delete>
+</mapper>

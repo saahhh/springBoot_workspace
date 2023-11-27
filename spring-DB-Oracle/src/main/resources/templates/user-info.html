@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.ThymeLeaf.org">
 <head>
 <meta charset="EUC-KR">
-<title>아이디 하나만 가지고오기</title>
+<title>유저 정보 조회</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-	<h1>getUserById</h1>
-	<div th:if="${user}">
-		<p th:text="${user.mno}"></p>
-		<p th:text="${user.mname}"></p>
-		<p th:text="${user.memail}"></p>
-		<p th:text="${user.mbirth}"></p>	
-	</div>
+	<h1>All User info</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>name</th>
+				<th>email</th>
+				<th>birth</th>
+				<th>modify</th>
+				<th>delete</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="u : ${users}">
+				<td th:text="${u.mno}"></td>
+				<td th:text="${u.mname}"></td>
+				<td th:text="${u.memail}"></td>
+				<td th:text="${u.mbirth}"></td>
+				<td><a th:href="@{'/api/user/update/' + ${user.mno}}"> 수정하기 </a></td>
+				<td><a th:href="@{'/user-delete/' + ${user.mno}}"> click </a></td>
+			</tr>
+		</tbody>		
+	</table>
 
 </body>
 </html>

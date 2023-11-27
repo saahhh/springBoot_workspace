@@ -24,10 +24,6 @@
         SELECT * FROM MEMBERINFO WHERE MEMAIL = #{memail}
     </select>
 
-    <select id="loginByMnameAndMemail" resultMap="com.kh.springdb.model.User">
-        SELECT * FROM MEMBERINFO WHERE MNAME = #{mname} AND MEMAIL = #{memail}
-    </select>
-
 	<!-- 사용자 정보 업데이트 -->
 	<update id="updateUser" parameterType="com.kh.springdb.model.User">
 		UPDATE MEMBERINFO

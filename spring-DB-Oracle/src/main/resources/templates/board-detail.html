@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="EUC-KR">
 	<title>게시물 상세보기</title>
-	<link rel="stylesheet" href="/css/styles.css" th:href="@{/css/styles/css}">
+	<link rel="stylesheet" href="/css/styles.css" th:href="@{/css/styles.css}">
 	</head>
 	<body>
 		<h2>게시물 상세보기</h2>
@@ -26,6 +26,6 @@
 			</tr>
 			
 		</table>
-		<a href="@{boards}">목록으로 돌아가기</a>
+		<a th:href="@{/boards}">목록으로 돌아가기</a>
 	</body>
 </html>

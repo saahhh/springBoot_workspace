@@ -1,5 +1,6 @@
 package com.kh.springdb.model;
 
+
 public class Board {
 	private int boardId;
 	private String title;
@@ -30,4 +31,5 @@ public class Board {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
 }

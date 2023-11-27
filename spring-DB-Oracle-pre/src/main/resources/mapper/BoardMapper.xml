@@ -5,4 +5,17 @@
 	<select id="getAllBoards" resultType="com.kh.springdb.model.Board">
 		SELECT * FROM board
 	</select>
+	
+	<update id="updateBoard" parameterType="com.kh.springdb.model.Board">
+		UPDATE board SET 
+		TITLE = #{title},
+		CONTENT = #{content},
+		AUTHOR = #{author}
+		WHERE BOARD_ID = #{board_id}
+		
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM BOARD WHERE BOARD_ID = #{board_id}
+	</delete>
 </mapper>

@@ -13,6 +13,8 @@
 				<th>제목</th>
 				<th>내용</th>
 				<th>저자</th>
+				<th>modify</th>
+				<th>delete</th>
 			</tr>
 		</thead>
 	
@@ -21,7 +23,9 @@
 				<td th:text="${board.board_id}"></td>
 				<td th:text="${board.title}"></td>
 				<td th:text="${board.content}"></td>
-				<td th:text="${board.author}"></td>				
+				<td th:text="${board.author}"></td>
+				<td><a th:href="@{'/board-update/' + ${board.board_id}}">click</a></td>
+				<td><a th:htef="@{'/board-delete/' + ${board.board_id}}">click</a></td>		
 			</tr>
 		</tbody>
 	</table>

@@ -17,4 +17,12 @@ public class BoardService {
 	public List<Board> getAllBoards(){
 		return boardMapper.getAllBoards();
 	}
+	
+	public void updateBoard(Board board) {
+		boardMapper.updateBoard(board);
+	}
+	
+	public void deleteBoard(int board_id) {
+		boardMapper.deleteBoard(board_id);
+	}
 }

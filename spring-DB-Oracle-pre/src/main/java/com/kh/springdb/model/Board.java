@@ -1,7 +1,5 @@
 package com.kh.springdb.model;
 
-import java.sql.Timestamp;
-
 public class Board {
 	private int board_id;
 	private String title;

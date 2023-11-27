@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	<head>
+	<meta charset="EUC-KR">
+	<title>게시판 내용 수정</title>
+	</head>
+	<body>
+		<h3>Board Update</h3>
+		<form th:object="${board}" action="@{'api/board/update/' + ${board.board_id}}" method="post">
+			<input type="hidden" th:field="*{board_id}" required>
+			
+			<label for="title"></label>
+			<input type="text" id="title" th:field="*{title}" required>
+			<br>
+			
+			<label for="content"></label>
+			<input type="text" id="content" th:field="*{content}" required>
+			<br>
+			
+			<label for="author"></label>
+			<input type="text" id="author" th:field="*{author}">
+			
+			<button type="submit"></button>		
+				
+		</form>
+		
+	</body>
+</html>

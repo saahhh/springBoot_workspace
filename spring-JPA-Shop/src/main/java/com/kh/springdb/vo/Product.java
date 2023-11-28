@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="ProductItem") //테이블을 생성해주는 어노테이션
+@Table(name="ProductItem")
 public class Product {
 	@Id
 	@Column(name="product_id")
@@ -34,7 +34,8 @@ public class Product {
 	@Column : 해당 필드가 데이터베이스 테이블의 컬럼에 매핑되는 것을 확인할 수 있다
 		nullable : 해당 컬럼이 null값을 허용하는지 여부를 나타낸다. (JPA안에 들어가있는 공식)
 		length : 문자열 컬럼의 최대 길이를 지정하는 것
-		String으로 시작되는 필드값의 경우 String으로 지정된 이름으로 명시되기 때문에 따로 name을 지정해주지 않아도 되지만 String 이외의 값은 name을 설정해주어 column명을 지정해주는 것이 원칙이다
+		String으로 시작되는 필드값의 경우 String으로 지정된 이름으로 명시되기 때문에 따로 name을 지정해주지 않아도 되지만 
+		String 이외의 값은 name을 설정해주어 column명을 지정해주는 것이 원칙이다
 				
 */
  

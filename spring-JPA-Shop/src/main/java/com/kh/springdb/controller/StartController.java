@@ -10,7 +10,7 @@ public class StartController {
 	@GetMapping(value="/test")
 	public Product startProduct() {
 		Product pd = new Product();
-		pd.setProduct_id(2);
+		pd.setProduct_id((long) 2);
 		pd.setProduct_name("kh");
 		return pd;
 	}
@@ -33,3 +33,4 @@ public class StartController {
 	@ResponseBody : 메서드가 return해서 반환해야하는 값을 HTTP 응답에서 html로 전달하는 것이 아닌 java코드에서 직접 본문으로 전달해서 사용할 수 있는 어노테이션
 					  
 */
+

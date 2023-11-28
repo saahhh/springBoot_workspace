@@ -1,4 +1,4 @@
-package com.kh.shop.repository;
+package com.kh.springdb.repository;
 
 import java.util.List;
 
@@ -9,6 +9,32 @@ import org.springframework.data.repository.query.Param;
 import com.kh.springdb.vo.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+	
+	
+}
+	
+
+	
+	
+/*
+	Repository 
+		Spring Data JPA에서 제공하는 인터페이스
+		데이터베이스에서 User 엔터티에 접근하는데 사용
+		기본적인 CRUD 작업을 수행할 수 있는 메서드를 제공한다
+		
+		예를들어
+			조회 : 전체조회(findAll) , 아이디 하나만 조회(findById) 와 같은 메서드
+			저장 : save
+			삭제 : deleteById(부분삭제)
+	
+*/	
+	
+	
+	
+	
+	
+
+	/*
 	//메서드 이름으로 간단하게 쿼리를 정의하기
 	Product findByProductName(String product_name);
 	
@@ -28,18 +54,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 		product.setCategory("가전");
 	}
 	*/
-}
 
 
- /*
- 	Repository 
- 		Spring Data JPA에서 제공하는 인터페이스
- 		데이터베이스에서 User 엔터티에 접근하는데 사용
- 		기본적인 CRUD 작업을 수행할 수 있는 메서드를 제공한다
- 		
- 		예를들어
- 			조회 : 전체조회(findAll) , 아이디 하나만 조회(findById) 와 같은 메서드
- 			저장 : save
- 			삭제 : deleteById(부분삭제)
- 	
- */
+
+
+

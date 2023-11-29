@@ -54,4 +54,25 @@ public class BoardController {
 		boardService.saveBoard(board);
 		return "redirect:/boards";
 	}
+	
+	@GetMapping("/update/{boardId}")
+	public String getUpdateBoard(@PathVariable Long boardId, Model model) {
+		Optional<Board> board = boardService.getBoardById(boardId);
+		board.ifPresent(value -> model.addAttribute("board", value));
+		return "board-form";
+	}
+	
+	//게시글 하나만 삭제
+	@GetMapping("/delete/{boardId}")
+	public String deleteBoard(@PathVariable Long boardId) {
+		boardService.deleteBoard(boardId);
+		return "redirect:/boards";
+	}
+	
+	//모두 삭제하기
+	@GetMapping("/delete/all")
+	public String deleteAllBoards() {
+		boardService.deleteAllBoards();
+		return "redirect:/boards";
+	}
 }

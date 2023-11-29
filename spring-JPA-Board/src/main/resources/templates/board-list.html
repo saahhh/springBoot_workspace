@@ -6,6 +6,19 @@
 	</head>
 	<body>
 		<h2>Board List</h2>
+		<script th:inline="javascript">
+			function checkDelete() {
+				var checkDelete = confirm("게시물을 모두 삭제하시겠습니까?");
+				if (checkDelete) {
+					window.location.href='boards/delete/all';
+					//return true;
+				} else {
+					alert("게시물 삭제를 취소했씁니다.");
+				} //return false;
+				
+			};
+			
+		</script>
 		<table border="1">
 			<thead>
 				<tr>
@@ -20,13 +33,20 @@
 					<td th:text="${board.boardId}"></td>
 					<td th:text="${board.title}"></td>
 					<td th:text="${board.author}"></td>
-					<td><a th:href="@{/boards/details/{boardId}(boardId=${board.boardId})}">View Details</a></td>
-					
+					<td>
+						<a th:href="@{/boards/details/{boardId}(boardId=${board.boardId})}">View Details</a>
+						<a th:href="@{/boards/update/{boardId}(boardId=${board.boardId})}">수정하기</a>
+						<a th:href="@{/boards/delete/{boardId}(boardId=${board.boardId})}">삭제하기</a>
+						
+					</td>
 				</tr>
 			</tbody>
 			
 		</table>
 		<a th:href="@{/boards/new}">Add New Board</a>
+		<!-- <a th:href="@{/boards/delete/all}">모든 게시물 삭제</a> -->
+		<a href="#" th:onclick="checkDelete()">모든 게시물 삭제</a>
+		<!-- js로 함수 쓴 경우에는 href="#"를 넣어줘야함 -->
 	</body>
 </html>
 

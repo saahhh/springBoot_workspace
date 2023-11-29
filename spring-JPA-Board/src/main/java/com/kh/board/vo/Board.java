@@ -16,8 +16,8 @@ import lombok.Setter;
 @Table(name="Board")
 public class Board {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="board_id_sequence") //시퀀스를 추가해서 자동으로 숫자가 올라가게함
-	@SequenceGenerator(name="board_id_sequence", sequenceName="board_id_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="board_add_sequence") //시퀀스를 추가해서 자동으로 숫자가 올라가게함
+	@SequenceGenerator(name="board_add_sequence", sequenceName="board_add_sequence", allocationSize = 1)
 	//DB에서 시퀀스이름으로 가져온 것
 	@Column(name="board_id")
 	private Long boardId;
@@ -42,5 +42,9 @@ public class Board {
     INCREMENT BY 1
     NOCACHE
     NOCYCLE;
+    
+    @SequenceGenerator(name="board_id_sequence", sequenceName="board_id_sequence", allocationSize = 1)
+    	데이터베이스에서 생성권한이 있는지 확인
+ 		
  */
  

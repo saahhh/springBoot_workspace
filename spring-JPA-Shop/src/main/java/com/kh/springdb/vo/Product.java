@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Products") //테이블명과 클래스명을 맞춰도 되고 아니여도 됨
+@Table(name="Product") //테이블명과 클래스명을 맞춰도 되고 아니여도 됨
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,7 @@ public class Product {
 	//@Column(name="price")
 	private Double price;
 	
-	private Integer stock_quantity;
+	private String stock_quantity;
 	
 }	//DB에 있는 순서와 다르면 오류남
 

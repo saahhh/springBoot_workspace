@@ -33,6 +33,7 @@ public class ProductService {
 	}
 	
 	//저장하는 메서드
+	//최초로 작성한 내용 저장, 기존에 작성한 내용 수정해서 저장
 	public Product saveProduct(Product product) {
 		return productRepository.save(product);
 	}
@@ -46,6 +47,6 @@ public class ProductService {
 
 /*
 Optional : 제품의 존재 여부를 체크할 수 있게 해주는 객체
-	
-	
+
+@Autowired : 초기화
 */

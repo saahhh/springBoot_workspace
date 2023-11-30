@@ -6,19 +6,19 @@
 	</head>
 	<body>
 		<h2>Cafe Form</h2>
-		<form action="@{/cafes/save}" th:object="${cafe}" method="post">
+		<form th:action="@{/cafes/save}" th:object="${cafe}" method="post">
 			
 			<label>Name : </label>
 			<input type="hidden" th:field="*{cafeId}">
-			<input type="text" id="name" name="name" th:field="*{name}" required/>
+			<input type="text" id="name" name="name" th:field="*{name}" />
 			<br/>
 			
 			<label>Location : </label>
-			<input type="text" id="location" name="location" th:field="*{location}" required/>
+			<input type="text" id="location" name="location" th:field="*{location}" />
 			<br/>
 			
 			<label>Opening Hours : </label>
-			<input type="text" id="openingHours" name="openingHours" th:field="*{openingHours}" required/>
+			<input type="text" id="openingHours" name="openingHours" th:field="*{openingHours}" />
 			<br/>
 			
 			<button type="submit">Save Cafe</button>

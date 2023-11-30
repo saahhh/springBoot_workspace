@@ -51,7 +51,7 @@ public class CafeController {
 	}
 	
 	//카페 상세보기 
-	@GetMapping("/datails/{cafeId}")
+	@GetMapping("/details/{cafeId}")
 	public String getCafeDetails(@PathVariable Long cafeId, Model model) {
 		Optional<Cafe> cafe = cafeService.getCafeById(cafeId);
 		cafe.ifPresent(value -> model.addAttribute("cafes", value));

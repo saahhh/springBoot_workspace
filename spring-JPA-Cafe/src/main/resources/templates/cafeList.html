@@ -32,11 +32,11 @@
 					<td th:text="${cafe.cafeId}"></td>
 					<td th:text="${cafe.name}"></td>
 					<td th:text="${cafe.location}"></td>
-					<td th:text="${cafe.openingHours"></td>
+					<td th:text="${cafe.openingHours}"></td>
 					<td>
-						<a th:href="@{'/cafes/' + cafe.cafeId}">상세보기</a>
-						<a th:href="@{'/cafes/update/' + cafe.cafeId}">수정하기</a>
-						<a th:href="@{'/cafes/delete/' + cafe.cafeId}">삭제하기</a>
+						<a th:href="@{'/cafes/details/' + ${cafe.cafeId}}">상세보기</a>
+						<a th:href="@{'/cafes/update/' + ${cafe.cafeId}}">수정하기</a>
+						<a th:href="@{'/cafes/delete/' + ${cafe.cafeId}}">삭제하기</a>
 						
 					</td>
 				</tr>
@@ -53,13 +53,6 @@
 		<table border="1">
 			<tr th:each="cafe : ${cafes}"></tr>
 		</table>
-		
-		
-		
-		
-		
-		
-		
 		
 		<a href="#" th:onclick="checkDelete()">모든 게시물 삭제</a>
 	

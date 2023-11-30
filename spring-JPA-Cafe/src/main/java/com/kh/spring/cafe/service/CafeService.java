@@ -12,12 +12,9 @@ import com.kh.spring.cafe.vo.Cafe;
 @Service
 public class CafeService {
 	
-	private final CafeRepository cafeRepository;
-
 	@Autowired
-	public CafeService(CafeRepository cafeRepository) {
-		this.cafeRepository = cafeRepository;
-	}
+	private CafeRepository cafeRepository;
+
 	
 	//카페 전체 조회(전체 검색)
 	public List<Cafe> getAllCafes(){
@@ -46,8 +43,9 @@ public class CafeService {
 	
 	
 	//카페 검색하기
-	public List<Cafe> findCafeByName(String keyword){
-		return cafeRepository.findCafeName(keyword);
+	public List<Cafe> findCafes(String keyword){
+		//return cafeRepository.findCafeName(keyword);
+		return cafeRepository.findByNameContaining(keyword);
 	}
 	
 	

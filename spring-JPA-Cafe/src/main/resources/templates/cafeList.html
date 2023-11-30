@@ -34,15 +34,33 @@
 					<td th:text="${cafe.location}"></td>
 					<td th:text="${cafe.openingHours"></td>
 					<td>
-						<a th:href="@{/cafes/details/{cafeId}(cafeId=${cafe.cafeId})}">상세보기</a>
-						<a th:href="@{/cafes/update/{cafeId}(cafeId=${cafe.cafeId})}">수정하기</a>
-						<a th:href="@{/cafes/delete/{cafeId}(cafeId=${cafe.cafeId})}">삭제하기</a>
+						<a th:href="@{'/cafes/' + cafe.cafeId}">상세보기</a>
+						<a th:href="@{'/cafes/update/' + cafe.cafeId}">수정하기</a>
+						<a th:href="@{'/cafes/delete/' + cafe.cafeId}">삭제하기</a>
 						
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<a th:href="@{cafes/new}">새로운 카페 추가</a>
+		
+		<form action="@{/cafes}" method="get">
+			<label>Search Cafe</label>
+			<input type="text" id="searchName" name="name"/>
+			<button type="submit">Search</button>
+		</form>
+		
+		<table border="1">
+			<tr th:each="cafe : ${cafes}"></tr>
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
 		<a href="#" th:onclick="checkDelete()">모든 게시물 삭제</a>
 	
 	</body>

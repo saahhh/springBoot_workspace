@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="EUC-KR">
 		<title>Cafe Form</title>
 	</head>
 	<body>
 		<h2>Cafe Form</h2>
-		<form action="@{/cafes/save}" th:object="${cafe}" method="post"">
+		<form action="@{/cafes/save}" th:object="${cafe}" method="post">
+			
+			<label>Name : </label>
+			<input type="hidden" th:field="*{cafeId}">
+			<input type="text" id="name" name="name" th:field="*{name}" required/>
+			<br/>
+			
+			<label>Location : </label>
+			<input type="text" id="location" name="location" th:field="*{location}" required/>
+			<br/>
+			
+			<label>Opening Hours : </label>
+			<input type="text" id="openingHours" name="openingHours" th:field="*{openingHours}" required/>
+			<br/>
+			
+			<button type="submit">Save Cafe</button>
 			
 		</form>
-	
+		<a th:href="@{/cafes}">Back to List</a>
 	</body>
 </html>
+
+<!-- 
+	*{} : DB에 넣어주기 위해 작성하는 field,내가 작성한 내용을 post로 보내줌
+	${} : text DB에서 가져온 내용을 사용자한테 보여주기 위해서 작성하는 text
+	
+	text : DB에 있는 내용을 사용자한테 보여주기 위해 작성하는 곳
+	field : 사용자가 작성한 내용을 DB에 넣기위해 작성하는 곳
+	
+	hidden : 값을 가져와서 저장하고 다시 꺼내올 때 (수정하기)
+ -->

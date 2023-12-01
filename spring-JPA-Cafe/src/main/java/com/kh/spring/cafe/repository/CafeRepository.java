@@ -10,9 +10,12 @@ import com.kh.spring.cafe.vo.Cafe;
 
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
 	
+	//카페가 존재하는지 존재여부(boolean)
+	boolean existsByName(String name);
+	
 	//count를 이용해서 지역의 갯수가 몇 개인지 찾아보는 메서드
 	int countByLocation(String location);
-	
+		
 	//특정 문자열을 포함한 엔터티를 검색하는데 사용하는 메서드
 	List<Cafe> findByNameContaining(String keyword);
 	

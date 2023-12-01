@@ -95,8 +95,8 @@ public class CafeController {
 	}
 	
 	//GetMapping을 활용해서 count해준 location을 가지고 오기
-	@GetMapping("/count/{location}")
-	public String countCafesByLocation(@PathVariable String location, Model model) {
+	@GetMapping("/count") //count인 이유 : @RequestParam 을 쓰고, list에서 넘어가기 때문
+	public String countCafesByLocation(@RequestParam String location, Model model) {
 		int cafeCount = cafeService.countCafesByLocation(location);
 		//1. 지역값을 저장할 모델이 필요
 		//2. 치역 갯수를 저장해줄 모델이 필요
@@ -105,9 +105,41 @@ public class CafeController {
 		return "cafeCount";
 	}
 	
+	//카페가 존재하는지 확인여부
+	@GetMapping("/exists/{name}")
+	public String existsCafeByName(@PathVariable String name, Model model) {
+		boolean cafeExists = cafeService.existsCafeByName(name);
+		model.addAttribute("cafeExists", cafeExists);
+		return "cafeExists";
+	}
 	
 	
 }
+
+/*
+	@PathVariable이 아니라 @RequestParam으로 값을 가져오는 경우
+		@GetMapping("/count") //count인 이유 : @RequestParam 을 쓰고, list에서 넘어가기 때문
+		public String countCafesByLocation(@RequestParam String location, Model model) {
+		int cafeCount = cafeService.countCafesByLocation(location);
+		//1. 지역값을 저장할 모델이 필요
+		//2. 치역 갯수를 저장해줄 모델이 필요
+		model.addAttribute("location", location);
+		model.addAttribute("cafeCount", cafeCount);
+		return "cafeCount";
+	}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	/*

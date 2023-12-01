@@ -6,10 +6,8 @@
 	</head>
 	<body>
 		<h2>Cafe Count</h2>
-		<p text="${location} ${cafeCount}"></p>
+		<p th:text="'카페' + ${location} + ' : ' + ${cafeCount}"></p>
 		<a th:href="@{/cafes}">Back to list</a>
 	
 	</body>
 </html>
-<!-- text : 
-field :

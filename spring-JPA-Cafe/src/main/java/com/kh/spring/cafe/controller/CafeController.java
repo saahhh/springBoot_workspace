@@ -94,6 +94,19 @@ public class CafeController {
 		return "redirect:/cafes";
 	}
 	
+	//GetMapping을 활용해서 count해준 location을 가지고 오기
+	@GetMapping("/count/{location}")
+	public String countCafesByLocation(@PathVariable String location, Model model) {
+		int cafeCount = cafeService.countCafesByLocation(location);
+		//1. 지역값을 저장할 모델이 필요
+		//2. 치역 갯수를 저장해줄 모델이 필요
+		model.addAttribute("location", location);
+		model.addAttribute("cafeCount", cafeCount);
+		return "cafeCount";
+	}
+	
+	
+	
 }
 
 	

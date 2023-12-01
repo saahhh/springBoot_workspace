@@ -10,6 +10,9 @@ import com.kh.spring.cafe.vo.Cafe;
 
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
 	
+	//count를 이용해서 지역의 갯수가 몇 개인지 찾아보는 메서드
+	int countByLocation(String location);
+	
 	//특정 문자열을 포함한 엔터티를 검색하는데 사용하는 메서드
 	List<Cafe> findByNameContaining(String keyword);
 	
@@ -60,8 +63,38 @@ public interface CafeRepository extends JpaRepository<Cafe, Long> {
 					deleteByLocation(String location)
 					DELETE FROM Cafe WHERE location = ?
 					
+				
+			(추가)
+			Query -> AND OR IS EQUALS BETWEEN AFTER BEFORE LIKE ORDERBY IN FALSE TRUE IGNORE
 			
-		
+			1. JPA에서 SQL AND구문을 써야할 때
+			 	findBy변수명AND다른변수명 (DB컬럼명과 변수명은 맞춰주는게 좋음)
+			 	
+			2. JPA에서 OR 구문을 써야할 때
+				findBy변수명OR다른변수명
+				
+			3. JPA에서 SQL IS 또는 Equals 구문을 써야할 때
+				findBy변수명IS
+				findBy변수명Equals
+			4. JPA에서 SQL BETWEEN AFTER BEFORE LIKE 구문을 써야할 때
+				findBy변수명BETWEEN
+				findBy변수명AFTER
+				findBy변수명BEFORE
+				findBy변수명LIKE
+			5. JPA에서 SQL ORDERBY 구문을 써야할 떄
+				findBy변수명OrderBy정렬하고자하는기준변수명Desc
+					(* Desc : 내림차순 / Asc : 오름차순)
+				findBy변수명OrderBy정렬하고자하는기준변수명Asc
+			6. JPA에서 SQL IN 구문을 써야할 때
+				findBy변수명In(List<예약어> 변수명)
+			
+			7. JPA에서 SQL TRUE FALSE 구문을 써야할 때
+				findBy변수명True()
+				findBy변수명False()
+						SQL : WHERE 테이블명의단축어.변수명(변수명=테이블명) = true
+						SQL : WHERE 테이블명의단축어.변수명 = false
+			8. JPA에서 SLQ IGNORECASE 구문을 써야할 때
+				findBy변수명IgnoreCase
 	*/
 	
 	

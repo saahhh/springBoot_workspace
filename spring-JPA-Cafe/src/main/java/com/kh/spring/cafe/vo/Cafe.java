@@ -14,11 +14,11 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="Cafes")
-@SequenceGenerator(name="cafes_sequence", sequenceName="cafes_sequence", allocationSize=1)
+
 public class Cafe {
 	
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="cafes_sequence")
-	
+	@SequenceGenerator(name="cafes_sequence", sequenceName="cafes_sequence", allocationSize=1)
 	@Id
 	@Column(name="cafeid")
 	private Long cafeId;

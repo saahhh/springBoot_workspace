@@ -49,6 +49,9 @@ public class CafeService {
 	}
 	
 	
-	
+	//repository에 작성한 지역 카운터를 가져와서 이용할 수 있는 메서드를 추가
+	public int countCafesByLocation(String location) {
+		 return cafeRepository.countByLocation(location);
+	}	
 	
 }

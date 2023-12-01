@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="EUC-KR">
+		<title>Product List</title>
+	</head>
+	<body>
+		<h2>Product List</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>CATEGORY</th>
+					<th>PRICE</th>
+					<th>STOCK QUANTITY</th>
+					<th>Detail(상세보기)</th>
+					<th>Update(수정하기)</th>
+					<th>Cart(장바구니담기)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product : ${products}">
+					<td th:text="${product.product_id}"></td>
+					<td th:text="${product.product_name}"></td>
+					<td th:text="${product.category}"></td>
+					<td th:text="${product.price}"></td>
+					<td th:text="${product.stock_quantity}"></td>
+					<td><a th:href="@{/products/details/{id}(id=${product.product_id})}">상세보기</a></td>	
+					<td><a th:href="@{'/product/update/' + ${product_id}}">수정하기</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/products/new}">Add New Product</a>
+	</body>
+</html>

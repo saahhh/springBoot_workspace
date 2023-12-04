@@ -13,7 +13,6 @@ public class MemberService {
 	
 	//1. 회원가입 메서드
 	public Member saveMember(Member member) {
-		//이미 가입한 회원인지 아닌지 체크해주는 메서드
 		return memberRepository.save(member);
 	}
 

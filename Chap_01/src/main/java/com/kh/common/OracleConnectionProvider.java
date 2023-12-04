@@ -10,6 +10,12 @@ public class OracleConnectionProvider {
 	private static final String jdbcPasswod = "kh1234";
 	
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPasswod);
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			return DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPasswod);
+		} catch (ClassNotFoundException e) {
+			throw new SQLException("JDBC 드라이버를 찾을 수 없습니다.", e);
+		}
+		
 	}
 }

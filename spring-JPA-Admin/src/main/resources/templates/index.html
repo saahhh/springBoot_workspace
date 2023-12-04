@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="EUC-KR">
+		<title>mainpage</title>
+	</head>
+	<body>
+		<h2>mainpage</h2>
+		<form>
+			<input th:type="email" name="email" placeholder="이메일을 입력해주세요"/ required>
+			<input th:type="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+			<button type="submit">로그인</button>
+		</form>
+		
+		<div>
+			<a href="/customers/new">회원가입</a>
+		</div>
+	</body>
+</html>

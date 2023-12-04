@@ -15,13 +15,48 @@ import com.kh.model.vo.DTO;
 
 @WebServlet("/selectUser")
 public class UserServlet extends HttpServlet {
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//doPost - > 전체조회 : List<DTO> userList = DAO.selectAllUsers();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//사용자로부터 입력받은 데이터 처리 및 DAO호출 작업을 수행할 것
 		//list로 조회된 결과를 가지고 온다
 		try {
-			List<DTO> userList = DAO.selectAllUsers();
-			//2. 값이 일치할 경우 
+			//전체조회(doPost) : List<DTO> userList = DAO.selectAllUsers();
+
+			//아이디 1개 조회 (doGet) : 
+				//사용자가 입력한 ID를 가지고오기
+			String user_id = request.getParameter("user_id");
+			List<DTO> userList = DAO.selectUserById(user_id);
+				
+			//1. 비어있지 않거나 null값이 아닐 때는 전체조회
+			if (userList != null && !userList.isEmpty()) {
+				request.setAttribute("userList", userList);
+				request.getRequestDispatcher("/searchResult.jsp").forward(request, response);
+				
+			} else {
+				//3. 검색 결과가 없을 때 
+				request.getRequestDispatcher("/searchError.jsp").forward(request, response);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/error.jsp");
+		}
+		
+	}
+	
+	/*
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//사용자로부터 입력받은 데이터 처리 및 DAO호출 작업을 수행할 것
+		//list로 조회된 결과를 가지고 온다
+		try {
+			//전체조회 : List<DTO> userList = DAO.selectAllUsers();
+			//아이디 1개 조회 (doGet) : 
+				//사용자가 입력한 ID를 가지고오기
+			String user_id = request.getParameter("user_id");
+			List<DTO> userList = DAO.selectUserById(user_id);
+			
 			
 			//1. 비어있지 않거나 null값이 아닐 때는 전체조회
 			if (userList != null && !userList.isEmpty()) {
@@ -34,13 +69,16 @@ public class UserServlet extends HttpServlet {
 			}
 			
 			
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/error.jsp");
 		}
-		
-	}
 
+	}
+	*/
+		
 }
+
+	
+

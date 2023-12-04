@@ -1,3 +1,6 @@
 1700537018049	Delete resource 'com.kh.springStart.springStart'
 1700543781501	Rename resource 'springStart-1'
 1700550061069	Rename resource 'Spring-Tymeleaf'
+1700639202957	Delete resource 'spring-DB-Oracle-pre/src/main/resources/mapper/ProductComment.xml'
+1700706419304	Delete resource 'spring-DB-Oracle-pre/src/main/resources/mapper/UserMapper.xml'
+1700706421203	Delete resource 'spring-DB-Oracle-pre/src/main/resources/templates/users-infromation.html'

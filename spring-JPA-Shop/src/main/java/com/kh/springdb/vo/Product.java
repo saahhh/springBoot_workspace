@@ -16,11 +16,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Product") //테이블명과 클래스명을 맞춰도 되고 아니여도 됨
+@Table(name="Products") //테이블명과 클래스명을 맞춰도 되고 아니여도 됨
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="board_add_sequence")
+	@SequenceGenerator(name="board_add_sequence", sequenceName="board_add_sequence", allocationSize=1)
+		
 	/*
 	//Oracle -> @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_name")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_name")

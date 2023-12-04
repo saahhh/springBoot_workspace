@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="EUC-KR">
+		<title>customerDetail</title>
+	</head>
+	<body>
+		<h3>회원 정보 상세보기</h3>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${customer} != null">
+					<td th:text="${customer.customerId}"></td>
+					<td th:text="${customer.customerName}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{/customers}">돌아가기</a>
+	</body>
+</html>

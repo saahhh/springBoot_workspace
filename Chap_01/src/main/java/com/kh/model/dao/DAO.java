@@ -36,4 +36,33 @@ public class DAO {
 		return userList;
 	}
 	
+	//2.내가 검색한 사용자가 있는지 확인하기 위해 입력한 사용자를 조회하는 sql문
+	public static List<DTO> selectUserById(String user_id) throws SQLException {
+		Connection conn = JDBCTemplate.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<DTO> userList = new ArrayList<>();
+		try {
+			String query = "SELECT * FROM test_user WHERE user_id = ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				DTO user = new DTO();
+				user.setUser_number(rs.getInt("USER_NUMBER"));
+				user.setUser_id(rs.getString("USER_ID"));
+				user.setUser_name(rs.getString("USER_NAME"));
+				user.setUser_age(rs.getInt("USER_AGE"));
+				userList.add(user);
+			}
+		} finally {
+			//close resultSet - PreparedStatement - Connection 의 순서
+		}
+		return userList;
+	}
+	
 }

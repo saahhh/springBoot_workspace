@@ -9,24 +9,21 @@
 		<form action="@{/products/save}" th:object="${product}" method="post">
 			<input type="hidden" th:field="*{product_id}" />
 			
-			<label>ID : </label>
-			<input name="product_id" th:text="*{product_id}"/>
-			
 			<label>NAME : </label>
-			<input name="product_name" th:field="*{product_name}"/>
+			<input type="text" th:field="*{product_name}"/><br/>
 			
 			<label>Category : </label>
-			<input name="category" th:field="*{category}"/>
+			<input type="text" th:field="*{category}"/><br/>
 			
 			<label>Price : </label>
-			<input name="price" th:field="*{price}"/>
+			<input type="text" th:field="*{price}"/><br/>
 			
 			<label>Stock Qunatity</label>
-			<input name="stock_quantity" th:field="*{stock_quantity}"/>
+			<input type="text" th:field="*{stock_quantity}"/><br/>
 			
 			<button type="submit">저장하기</button>
 		</form>
-	
+		<a th:href="@{/products}">돌아가기</a>
 	</body>
 </html>
 

@@ -27,7 +27,7 @@
 					<td th:text="${product.price}"></td>
 					<td th:text="${product.stock_quantity}"></td>
 					<td><a th:href="@{/products/details/{id}(id=${product.product_id})}">상세보기</a></td>	
-					<td><a th:href="@{'/product/update/' + ${product_id}}">수정하기</a></td>
+					<td><a th:href="@{'/products/update/' + ${product_id}}">수정하기</a></td>
 				</tr>
 			</tbody>
 		</table>

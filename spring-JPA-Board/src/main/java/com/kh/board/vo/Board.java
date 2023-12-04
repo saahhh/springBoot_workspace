@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Boards")
+@Table(name="Board")
 public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="board_add_sequence") //시퀀스를 추가해서 자동으로 숫자가 올라가게함

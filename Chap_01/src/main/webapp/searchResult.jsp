@@ -12,7 +12,7 @@
 		<title>searchResult 검색결과</title>
 	</head>
 	<body>
-		<h1>조회 결과</h1>
+		<h3>조회 결과</h3>
 		<table border="1">
 			<thead>
 				<tr>

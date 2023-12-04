@@ -68,12 +68,12 @@ public class Productcontroller {
 		return "redirect:/products";
 	}
 	
+	
 	@GetMapping("/update/{id}")
 	public String updateProduct(@PathVariable Long id, Model model) {
 		Optional<Product> product = productService.getProductById(id);
 		product.ifPresent(value -> model.addAttribute("product", value));
 		return "product_form";
-		
 	}
 
 	//delete GetMapping

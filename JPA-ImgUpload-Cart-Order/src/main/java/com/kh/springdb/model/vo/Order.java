@@ -42,7 +42,7 @@ public class Order {
 	private User user; //구매자 유저
 	
 	@OneToMany(mappedBy = "order")
-	private List<구매한아이템> orderItem = new ArrayList<>();
+	private List<OrderItem> orderItem = new ArrayList<>();
 	
 	//구매날짜
 	@DateTimeFormat(pattern = "yyyy-mm-dd")

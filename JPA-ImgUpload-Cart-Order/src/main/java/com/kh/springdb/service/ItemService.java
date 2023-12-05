@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.springdb.model.vo.Item;
@@ -13,6 +14,11 @@ public class ItemService {
 	
 	private ItemRepository itemRepository;
 	
+	@Autowired
+	public ItemService(ItemRepository itemRepository) {
+		this.itemRepository = itemRepository;
+	}
+	
 	//상품을 추가하고 삭제하고 수정하는 기능
 	public void addItem(Item item, MultipartFile photoFile) {
 		
@@ -20,6 +26,7 @@ public class ItemService {
 		//이미지 파일 정보에 대해서 추출
 		String originPhotoName = photoFile.getOriginalFilename(); //업로드된 이미지 파일의 원본 파일명을 가져옴
 		String photoName = "";
+		//업로드된 이미지 파일의 원본 파일명을 가져옴
 		
 		String photoPath = System.getProperty("user.dir") + "src/main/resources/static/uploadImg/"; //업로드된 이미지 파일 경로를 설정
 		//System.getProperty("user.dir") :

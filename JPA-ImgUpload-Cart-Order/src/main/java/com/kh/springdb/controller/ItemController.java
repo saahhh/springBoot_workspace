@@ -25,7 +25,7 @@ public class ItemController {
 	// @NotNull로 표시된 필드를 사용해서 생성자를 생성
 		private final ItemService itemService;
 		
-	    @GetMapping("/")
+	    @GetMapping("/index")
 	    public String mainPageNoneLogin(Model model) {
 	        // 로그인을 안 한 경우
 	        List<Item> items = itemService.allItemView();

@@ -46,8 +46,12 @@ public class ItemController {
 	//클라이언트가 등록한 상품 등록 내용을 DB에 업로드
 	@PostMapping("/item/new")
 	public String itemSave(Item item, MultipartFile imgFile) throws IllegalStateException, IOException {
-		itemService.saveItem(item, imgFile);
-		return "redirect:/item/list";
+		if (imgFile != null) {
+			itemService.saveItem(item, imgFile);
+			return "redirect:/item/list";
+		} else {
+			return "";
+		}
 	}
 	
 	//아이템 상세보기 메서드

@@ -13,11 +13,13 @@ import com.kh.springdb.repository.CartItemRepository;
 import com.kh.springdb.repository.CartRepository;
 import com.kh.springdb.repository.ItemRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class CartService {
   @Autowired
-  private CartItemRepository carItemRepository;
+  private CartItemRepository cartItemRepository;
 
   @Autowired
   private ItemRepository itemRepository;
@@ -26,11 +28,11 @@ public class CartService {
   private CartRepository cartRepository;
 
   public List<CartItem> findCartItemByCartId(int cartId) {
-      return carItemRepository.findCartItemByItemId(cartId);
+      return cartItemRepository.findCartItemByItemId(cartId);
   }
 
   public List<CartItem> findByItemId(int itemId) {
-      return carItemRepository.findByItemId(itemId);
+      return cartItemRepository.findByItemId(itemId);
   }
 
   public Cart getCartById(Long cartId) {
@@ -46,7 +48,7 @@ public class CartService {
 	    });
 
 	    // 장바구니에 해당 아이템이 이미 담겨져 있는지 확인
-	    CartItem cartItem = carItemRepository.findByCartIdAndItemId(cartId, newItem.getId());
+	    CartItem cartItem = cartItemRepository.findByCartIdAndItemId(cartId, newItem.getId());
 
 	    if (cartItem == null) {
 	        // 장바구니에 해당 아이템이 없으면 새로운 CartItem 생성
@@ -60,7 +62,7 @@ public class CartService {
 	    }
 
 	    // 생성 또는 업데이트된 CartItem을 저장
-	    carItemRepository.save(cartItem);
+	    cartItemRepository.save(cartItem);
 	 
 	}
 	

@@ -30,8 +30,8 @@ public class Cart {
 	
 	//비회원 아이디값 비회원이 주문한 장바구니 리스트
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="cart_seq")
-	@SequenceGenerator(name="cart_seq", sequenceName="cart_seq", allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="carts_seq")
+	@SequenceGenerator(name="carts_seq", sequenceName="carts_seq", allocationSize=1)
 	private Long id;
 	
 	@OneToMany(mappedBy="cart", cascade=CascadeType.ALL)
@@ -44,6 +44,18 @@ public class Cart {
 	public int getTotalCount() {
 		return cartItems.stream().mapToInt(CartItem::getCount).sum();
 	}
+	
+	//카트에 담긴 총 상품 개수
+	private int count;
+	
+	@DateTimeFormat(pattern="yyyy-mm-dd")
+	private LocalDate createDate;
+	
+	@PrePersist
+	public void createDate() {
+		this.createDate = LocalDate.now();
+	}
+		
 	/*
 	 stream() : 리스트로 받아서 스트림으로 변환하겠다
 				List나 Map 배열처리를 해서 총 가격 합을 받아야 하지만

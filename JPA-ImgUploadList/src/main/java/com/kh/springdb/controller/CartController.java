@@ -27,6 +27,7 @@ public class CartController {
 	}
 	
 	//장바구니 목록 보여주기 위한 GetMapping
+	@GetMapping()
 	public String viewCart(Model model) {
 		Cart cart = cartService.getCartById(1L);
 		model.addAttribute("cart", cart);
@@ -55,7 +56,7 @@ public class CartController {
 	}
 	
 	@PostMapping("/add")
-	public String addToCartItem(@RequestParam("itemid") Long itemId, Model model) {
+	public String addToCartItem(@RequestParam("itemId") Long itemId, Model model) {
 		Item newItem = itemService.getItemById(itemId.intValue());
 						//1L : 유저 아이디 값 , newItem : 새로운 아이템 추가 , 1 : 카트에 추가할 아이템 수량
 		cartService.addCart(1L, newItem, 1);

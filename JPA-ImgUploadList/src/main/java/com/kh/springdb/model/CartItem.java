@@ -23,8 +23,8 @@ import lombok.Setter;
 public class CartItem {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="cartItem_seq")
-	@SequenceGenerator(name="cartItem_seq", sequenceName="cartItem_seq", allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="cartItems_seq")
+	@SequenceGenerator(name="cartItems_seq", sequenceName="cartItems_seq", allocationSize=1)
 	private int id;
 	
 	//어떤 아이템인지 알기위해 Item 클래스를 가지고 옴
@@ -42,9 +42,9 @@ public class CartItem {
 	//상품개수
 	private int count;
 	
-	public static CartItem createCartItem(/*Cart cart,*/ Item item, int amount) {
+	public static CartItem createCartItem(Cart cart, Item item, int amount) {
 		CartItem cartItem = new CartItem();
-		//cartItem.setCart(cart);
+		cartItem.setCart(cart);
 		cartItem.setItem(item);
 		cartItem.setCount(amount);
 		return cartItem;

@@ -54,7 +54,7 @@
 				<p>장바구니가 비어있습니다.</p>
 			</div>
 			
-				<form action="@{/cart/checkout}" method="post">
+				<form th:action="@{/cart/checkout}" method="post">
 					<button type="submit">결제하기</button>
 				</form>
 		</div>

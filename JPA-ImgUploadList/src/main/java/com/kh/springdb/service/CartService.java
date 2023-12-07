@@ -96,9 +96,10 @@ public class CartService {
 			
 			//delete와 clear 두 가지 방법
 			//clear는 결제 후 장바구니 비우기
+			
+			cartItemRepository.deleteAll();
 			cart.getCartItems().clear();
 			cartRepository.save(cart);
-			
 			
 		}
 		

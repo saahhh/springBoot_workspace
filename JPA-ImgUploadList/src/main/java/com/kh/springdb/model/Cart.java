@@ -43,7 +43,7 @@ public class Cart {
 	//만약에 Entity에 설정한 name이 있다면 
 	//JoinColumn(name="customer_order_id)
 	@OneToOne(mappedBy = "cart")
-	@JoinColumn(name = "order_id")
+	@JoinColumn(name = "customer_order_id")
 	private Order order;
 	
 	

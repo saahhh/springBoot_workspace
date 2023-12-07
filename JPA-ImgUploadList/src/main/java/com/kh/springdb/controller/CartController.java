@@ -68,13 +68,13 @@ public class CartController {
 	//결제 완료 후 장바구니 삭제하기 위한 메서드 추가
 	//RedirectAttributes 속성을 다시 보내준다
 	@PostMapping("/checkout")
-	public String checkout(RedirectAttributes redirectAttribute ) {
+	public String checkout(RedirectAttributes redirectAttributes ) {
 		Long cartId = 1L;
 		try {
 			cartService.checkout(cartId);
-			redirectAttribute.addFlashAttribute("checkoutStatus", "success");
+			redirectAttributes.addFlashAttribute("checkoutStatus", "success");
 		}catch (Exception e) {
-			redirectAttribute.addFlashAttribute("checkoutStatus", "empty");
+			redirectAttributes.addFlashAttribute("checkoutStatus", "empty");
 		}
 		return "redirect:/cart";
 	}

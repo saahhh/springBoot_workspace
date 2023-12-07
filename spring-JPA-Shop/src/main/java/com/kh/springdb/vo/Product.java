@@ -90,3 +90,73 @@ public class Product {
 	@ResponseBody : 메서드가 return해서 반환해야하는 값을 HTTP 응답에서 html로 전달하는 것이 아닌 java코드에서 직접 본문으로 전달해서 사용할 수 있는 어노테이션
 					  
 */
+
+
+/*
+ 	Lombok
+ 	
+ 		@Builder : 객체를 생성할 때 매개변수의 순서나 개수에 관계없이 보기 편할 수 있도록 객체를 생성할 수 있게 도와주는 메서드
+ 		@AllArgsContructor : 모든 필드에 생성자를 생성해줌
+ 							 이를 사용하여 객체를 생성할 때 모든 필드를 포함하는 생성자를 쉽게 만들수 있다
+				예제코드 :
+				
+				@AllArgsContructor
+				public class Student {
+					private String name; // new Student("학생명",3)
+					private int grade;
+				}
+ 		
+ 		@NoArgsconstructor : 매개변수가 없는 기본 생성자를 생성해줌
+ 				예제코드 : 
+ 				
+ 				@NoArgsconstructor
+ 				public class School {
+ 										//new School()
+ 				}
+		
+		@RequiredArgsConstructor : 이 어노테이션이 적용된 클래스는 필수로 초기화 해야하는 final필드나 @NotNull로 표시된 필드를 사용하는 생성자를 자동으로 생성해준다
+				예제코드 :
+				
+				@RequiredArgsConstructor
+				public class Student{
+					private final String name;
+					private final int grade;
+					private String address;
+				}
+				=> final이 붙은 name과 grade는 생성자에 포함되지만 address는 생성자에 포함되지 않는다
+					나중에 Student 객체를 다른데서 불러올 때 Student st = new Student("이름", 학년);은 필수지만
+					address는 필수가 아니다(넣어도되고 안넣어도 됨)
+				
+		
+ */		
+
+
+/*
+	JPA어노테이션
+	
+ 		@Prepersist : 엔터티가 데이터베이스에 저장되기 전에 호출되는 메서드를 지정
+ 				 	  엔터티에 필요한 사전 처리 작업을 수행하는데 많이 사용
+ 					
+ 				예제코드 : 
+ 				@Entity
+ 				public class TestEntity {
+ 					@Id
+ 					private Long id;
+ 					private String name;
+ 					
+ 					@DateTimeFormat(pattern = "yyyy-mm-dd")
+ 					private Date createDate; //now라는 메서드를 활용해서 현재 시간을 넣었었음
+ 					
+ 					@Prepersist
+ 					private void preWork() {
+ 						//저장 전 수행할 작업을 작성
+ 						//생성일자 생성이나 특정 필드 초기화
+ 					}
+ 					@Prepersist
+ 					private void createDate() {
+ 						this.createDate = LocalDate.now();
+ 					}
+ 					
+ 				}
+ 				
+ */

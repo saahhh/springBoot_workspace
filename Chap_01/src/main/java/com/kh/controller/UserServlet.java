@@ -47,7 +47,7 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	/*
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//사용자로부터 입력받은 데이터 처리 및 DAO호출 작업을 수행할 것
 		//list로 조회된 결과를 가지고 온다
 		try {

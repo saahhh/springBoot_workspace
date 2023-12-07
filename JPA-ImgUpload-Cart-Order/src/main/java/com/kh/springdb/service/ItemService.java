@@ -22,7 +22,7 @@ public class ItemService {
     private final ItemRepository itemRepository;
     // 상품 등록
     public void saveItem(Item item, MultipartFile imgFile) throws Exception {
-
+    	if(imgFile != null) {
         String oriImgName = imgFile.getOriginalFilename();
         String imgName = "";
 
@@ -38,6 +38,7 @@ public class ItemService {
         item.setImgName(imgName);
         item.setImgPath("/files/" + imgName);
         itemRepository.save(item);
+    	}
     }
 
     // 상품 개별 불러오기

@@ -11,7 +11,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
@@ -36,6 +38,14 @@ public class Cart {
 	
 	@OneToMany(mappedBy="cart", cascade=CascadeType.ALL)
 	private List<CartItem> cartItems = new ArrayList<>();
+	
+	//order 객체 생성으로 인한 추가 mapper
+	//만약에 Entity에 설정한 name이 있다면 
+	//JoinColumn(name="customer_order_id)
+	@OneToOne(mappedBy = "cart")
+	@JoinColumn(name = "order_id")
+	private Order order;
+	
 	
 	public int getTotalAmount() {
 		return cartItems.stream().mapToInt(item -> item.getCount() * Integer.parseInt(item.getItem().getPrice())).sum();

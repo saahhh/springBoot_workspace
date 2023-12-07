@@ -17,7 +17,6 @@
 	<body>
 		<h1>장바구니</h1>
 		<div th:if="${cart != null}">
-
 			<table border="1">
 				<thead>
 					<tr>
@@ -30,11 +29,11 @@
 				</thead>
 				<tbody th:each="cartItem : ${cart.cartItems}">
 					<tr>
-						<td><img th:src="@{${cartItem.item.ImgPath}}" class="item-container"/></td>
+						<td><img th:src="@{${cartItem.item.getImgPath()}}" class="item-container"/></td>
 						<td th:text="${cartItem.item.name}"></td>
 						<td th:text="${cartItem.item.price}"></td>
 						<td th:text="${cartItem.count}"></td>
-						<td th:text="${cartItem.item.price * cartItem.count}"></td>
+						<td th:text="${cartItem.item.price} * ${cartItem.count}"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -42,14 +41,37 @@
 			<!-- 총 가격 총 수량을 작성해주는 p태그 -->
 			<p>총 가격 : <span th:text="${cart.totalAmount}"></span></p>
 			<p>총 수량 : <span th:text="${cart.totalCount}"></span></p>
+		
 			
+			<!-- param.checkoutStatus : 주소값에서 checkoutStatus == 'sucess'를 읽는 것
+				http://127.0.0.1:8082/cart? checkoutStatus == 'sucess'
+			-->
+			<div th:if="${param.checkoutStatus == 'success'}">
+				<p>결제가 완료되었습니다.</p>
+			</div>
+			
+			<div th:if="${param.checkoutStatus == 'empty'}">
+				<p>장바구니가 비어있습니다.</p>
+			</div>
+			
+				<form action="@{/cart/checkout}" method="post">
+					<button type="submit">결제하기</button>
+				</form>
 		</div>
+		
+		
 		<div th:unless="${cart != null}">
 			<p>카트에 담긴 제품이 없습니다.</p>
 			
 		</div>
 	</body>
 </html>
+
+<!--1. clear가 되지 않는다면 delete를 이용해서 장바구니 비우기
+	2. db table 세팅 확인하기
+	3. order에서 에러가 난다면 entity name 설정 해야지 설정 가능
+	4. redirect flash설정이 되지 않는다면 @PathVariable, @RequestParam사용해서 redirect해주기 -->
+
 
 <!-- 시퀀스가 안생기는 경우 변수명 뒤에 s나 d 입력해보기 -->
 

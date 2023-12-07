@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.springdb.model.Cart;
 import com.kh.springdb.model.Item;
@@ -64,4 +65,27 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
+	//결제 완료 후 장바구니 삭제하기 위한 메서드 추가
+	//RedirectAttributes 속성을 다시 보내준다
+	@PostMapping("/checkout")
+	public String checkout(RedirectAttributes redirectAttribute ) {
+		Long cartId = 1L;
+		try {
+			cartService.checkout(cartId);
+			redirectAttribute.addFlashAttribute("checkoutStatus", "success");
+		}catch (Exception e) {
+			redirectAttribute.addFlashAttribute("checkoutStatus", "empty");
+		}
+		return "redirect:/cart";
+	}
 }
+
+
+/*
+	RedirectAttributes : redirect할 때 속성을 전달하는데 사용
+	addFlashAttribute  : 데이터를 추가할 때 리다이렉트 후에 한 번만 사용 가능,
+	 					 사용 후에는 속성이 자동으로 삭제된다(일회성)
+	 					 redirect해서 돌아가고자 하는 페이지로 이동할 때 속성이 존재하고, 돌아간 페이지에서 속성을 사용할 수 있다
+	 					 
+	
+ */

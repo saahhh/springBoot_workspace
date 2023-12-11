@@ -9,7 +9,7 @@
 			<h4>회원가입</h4>
 		</div>
 		<form th:action="@{/user/signup}" th:object="${userCheckForm}" method="post">	
-			<form>
+			
 				<div>
 					<label>사용자ID</label>
 					<input type="text" th:field="*{username}" />
@@ -27,7 +27,7 @@
 					<input type="email" th:field="*{email}"/>
 				</div>
 				<button type="submit">회원가입</button>
-			</form>
+			
 		</form>
 	</body>
 </html>

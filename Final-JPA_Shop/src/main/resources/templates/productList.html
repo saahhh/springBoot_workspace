@@ -8,15 +8,15 @@
 		<h1>Product List</h1>
 		<a th:href="@{/product/new}">상품추가하기</a>
 		<div th:each="product : ${products}">
-			<img th:src="@{${product.getImgPath()}}"/> 
+			<img th:src="@{${product.getImgPath()}}" style="width:300px; height:300px;"/><br>
 			
 			<label>제품명 : </label>
-			<span th:text="${product.name}"></span>
+			<span th:text="${product.name}"></span><br>
 			
 			<label>제품 가격 : </label>
-			<span th:text="${product.price}"></span>
+			<span th:text="${product.price}"></span><br>
 			
-			<a th:href="@{/product/detail/{id}(id=${product.id})}">상세보기</a>
+			<a th:href="@{/product/detail/ + ${product.id}}">상세보기</a>
 			
 			<!-- 장바구니에 상품을 담고자 한다면 장바구니에 담기 버튼 생성해서 담아주기 -->
 			<form th:action="@{/cart/add}" method="post">

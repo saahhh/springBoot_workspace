@@ -3,55 +3,87 @@
 	<head>
 		<meta charset="EUC-KR">
 		<title>ProductList</title>
+		<style>
+			.prod-container{
+				max-width: 500px;
+				margin:0 auto;
+				box-sizing: border-box;
+			}
+			.prod{
+				float:left;
+				width: 300px;
+				border: none;
+				padding:10px;
+				text-align: center;
+				margin-bottom: 20px;
+				float: left;
+			}
+			.prod img{
+				width:100%;
+				height:auto;
+			}
+			
+		</style>
 	</head>
 	<body>
 		<h1>Product List</h1>
 		<a th:href="@{/product/new}">상품추가하기</a>
-<!--1--><div th:each="product, loop : ${paging.content}">
-			<div th:if="${product.imgName != null and product.imgPath != null}">
-				<img th:src="@{${product.getImgPath()}}" style="width:300px; height:300px;"/> 
-			</div>
-			<div th:unless="${product.imgName != null and product.imgPath != null}">
-			    <img th:src="@{'/img/notImg.jpg'}" >
-			</div>
-			<label>제품명 : </label>
-			<span th:text="${product.name}"></span>
-			
-			<label>제품 가격 : </label>
-			<span th:text="${product.price}"></span>
-			
-			<a th:href="@{/product/detail/ + ${product.id}}">상세보기</a>
-			
-			<!-- 장바구니에 상품을 담고자 한다면 장바구니에 담기 버튼 생성해서 담아주기 -->
-			<form th:action="@{/cart/add}" method="post">
-				<input type="hidden" name="productId" th:value="${product.id}"/>
-				<button type="submit">장바구니에 담기</button>
-			</form>
-		</div>
-		<!-- paging을 하기위한 번호 목록 만들어주기 -->
-		<div th:if="${!paging.isEmpty()}">
-			<ul>
-				<li th:classappend="${!paging.hasPrevious} ? 'disabled'">
-					<a th:href="@{/?page=${paging.number-1}/}">
-						<span>이전</span>
-					</a>
-				</li>
-				
-				<li 
-				th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}" 
-				th:classappend="${page == paging.number} ? 'active'">
-					<a th:text="${page}" th:href="@{/?page=${page}/}"></a>
-				</li>
-				
-				<li th:classappend="${!paging.hasNext} ? 'disabled'">
-					<a th:href="@{/?page=${paging.number+1}/}">
-						<span>다음</span>
-					</a>
-				</li>
-			</ul>
-
-		</div>
 		
+	<!--1--><div th:each="product, loop : ${paging.content}">
+				<div th:if="${product.imgName != null and product.imgPath != null}">
+					<img th:src="@{${product.getImgPath()}}" style="width:300px; height:300px;" /> 
+				</div>
+				
+				<div th:unless="${product.imgName != null and product.imgPath != null}">
+				    <img th:src="@{'/img/notImg.jpg'}" >
+				</div>
+				
+			
+				<label>제품명 : </label>
+				<span th:text="${product.name}"></span>
+				
+				<label>제품 가격 : </label>
+				<span th:text="${product.price}"></span>
+				
+				<a th:href="@{'/product/detail/' + ${product.id}}">상세보기</a>
+				
+				<!-- 장바구니에 상품을 담고자 한다면 장바구니에 담기 버튼 생성해서 담아주기 -->
+				<form th:action="@{/cart/add}" method="post">
+					<input type="hidden" name="productId" th:value="${product.id}"/>
+					<button type="submit">장바구니에 담기</button>
+				</form>
+				<!-- 게시물에 번호 주기 -->
+				<div th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></div>
+			</div>
+		
+			<!-- paging을 하기위한 번호 목록 만들어주기 -->
+			<div th:if="${!paging.isEmpty()}">
+				<ul>
+					<li th:classappend="${!paging.hasPrevious} ? 'disabled'">
+						<!-- "(큰 따옴표)로 감싸진 thymeleaf안에 
+							 '(작은 따옴표)로 감싸서 기존에 문자와 코드를 구분헀지만
+							 |(수직 바, 파이프)로 감싸진 문구는 동적으로 바뀌는 문자열을 의미함
+						 -->
+						<a th:href="@{|?page=${paging.number-1}|}">
+							<span>이전</span>
+						</a>
+					</li>
+					
+					<li 
+					th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}" 
+					th:if="${page >= paging.number -3 and page <= paging.number +3}"
+					th:classappend="${page == paging.number} ? 'active' : ''">
+						<a th:text="${page}" th:href="@{|?page=${page}|}"></a>
+					</li>
+					
+					<li th:classappend="${!paging.hasNext} ? 'disabled'">
+						<a th:href="@{|?page=${paging.number+1}|}">
+							<span>다음</span>
+						</a>
+					</li>
+				</ul>
+	
+		 </div>	
 		<!--
 			paging.isEmpty = 게시물이 존재하는지 존재하지 않는지 체크
 			paging.totalElements = 전체 게시물 개수

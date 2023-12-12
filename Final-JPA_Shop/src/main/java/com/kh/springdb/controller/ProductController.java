@@ -1,8 +1,8 @@
 package com.kh.springdb.controller;
 
 import java.io.IOException;
-import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.springdb.model.Product;
+import com.kh.springdb.service.CommentService;
 import com.kh.springdb.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -42,14 +43,27 @@ public class ProductController {
 		return "product_List";
 	}
 	
+	@Autowired
+	private CommentService commentService;
+	
+	//댓글 작성하기 위한 PostMapping
+	@PostMapping("/addComment")
+	public String addComment(@RequestParam int productId, @RequestParam String content) {
+		commentService.addComment(productId, content);
+		return "redirect:/product/detail/" + productId;
+	}
+	
+	
 	//상품 전체 목록 페지이로 이동하기위한 GetMapping
+	/*
 	@GetMapping("/product/list")
 	public String productList(Model model) {
 		//아이템을 추가한 서비스를 불러와서 모델에 넣어줘야 리스트를 볼 수 있음
 		List<Product> products = productService.allProductView();
 		model.addAttribute("products", products); //productList의 <div th:each="product : ${products}">
-		return "product_List";
+		return "productList";
 	}
+	*/
 	
 	//상품 등록 페이지 - 조회
 	@GetMapping("/product/new")

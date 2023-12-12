@@ -62,3 +62,23 @@ public class Product {
 	}
 	
 }
+
+
+/*
+.html
+index.html - 회원가입 로그인 로그아웃버튼, 상품리스트로 이동하기 버튼
+login_form - 아이디, 패스워드 / 아이디찾기(이름 넣어서 일치하는 이름이 있으면 아이디전달,detail상세보기와 같음) 
+signup_form - 회원가입 아이디 비밀번호 비밀번호확인 이름 이메일 
+product_list - 상품명 상품상세보기 상품가격 (장바구니 담기)
+product_detail - 상품에 대한 상세정보
+
+ProductController - 상품리스트, 상품 상세보기,
+UserController - 회원가입,로그인,로그아웃
+CartController - 장바구니에 상품 담기, 상품 주문하기
+
+
+
+product - 상품명 설명 가격 판매개수 재고 품절유무 업로드 이미지 파일명 파일경로 상품등록일
+productdetail
+productList
+*/

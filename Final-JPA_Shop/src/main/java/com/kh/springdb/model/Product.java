@@ -24,8 +24,8 @@ import lombok.Setter;
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="produc_seq")
-	@SequenceGenerator(name="produc_seq", sequenceName="produc_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="product_seq")
+	@SequenceGenerator(name="product_seq", sequenceName="product_seq", allocationSize=1)
 	private int id;
 	
 	private String name;

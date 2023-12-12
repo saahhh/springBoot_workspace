@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,18 +25,30 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 	
+	//pagination add
+	public Page<Product> getList(int page){
+										//page = 페이지 값, 1 = 페이지당 보여줄 목록 개수
+		/*
+		int conPage = Math.max(0, page);
+		Pageable pageable = PageRequest.of(conPage, 1); 
+		*/
+		Pageable pageable = PageRequest.of(page, 1);
+		return productRepository.findAll(pageable);
+	}
+	
 	public void saveProduct(Product product, MultipartFile imgFile) throws IllegalStateException, IOException {
 		//이미지 파일 이름 가져오기
 		String originName = imgFile.getOriginalFilename();
-		String projectPath = System.getProperty("user.dir") + "/src/main/resource/static/img";
+		String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/img/";
 		
 		File saveFile = new File(projectPath, originName);
 		//MultipartFile에 File로 읽어온 이미지 파일을 저장하기 위해 변환
 		//MultipartFile imgFile				File saveFile
 		imgFile.transferTo(saveFile);
 		
-		product.setImgName(originName); //가져온 파일 이름 원본 저장
-		product.setImgPath(projectPath); //경로 저장을 DB에 작성해주기
+		product.setImgName(projectPath); //가져온 파일 이름 원본 저장
+		product.setImgPath("/img/" + originName); //경로 저장을 DB에 작성해주기
+		
 		productRepository.save(product);
 	}
 	

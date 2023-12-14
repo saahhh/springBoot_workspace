@@ -9,6 +9,12 @@
 			<h4>회원가입</h4>
 		</div>
 		<form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">	
+				
+				<div>
+					<label for="isRole">가입자 선택</label>
+					<input type="radio" th:field="*{isRole}" value="ADMIN" />관리자
+					
+				</div>
 			
 				<div>
 					<label>사용자ID</label>

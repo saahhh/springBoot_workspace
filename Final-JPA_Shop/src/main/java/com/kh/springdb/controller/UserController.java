@@ -40,7 +40,7 @@ public class UserController {
 	//로그인
 	@GetMapping("/login")
 	public String login() {
-		return "redirect:/";
+		return "login_form";
 	}
 	
 }

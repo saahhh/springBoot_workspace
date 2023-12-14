@@ -38,7 +38,7 @@ public class UserSecurityService implements UserDetailsService{
 	//UserDetails = 스프링 시큐리티가 사용자의 인증과 권한부여를 처리하는데 필요한 정보를 제공해준다
 	//인터페이스로 다양한 종류의 메서드가 있음
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<SiteUser> _siteUser = userRepository.findByusername(username);
+		Optional<SiteUser> _siteUser = userRepository.findByusername(username); //_siteUser는 형식
 		if(_siteUser.isEmpty()) {
 			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
 		}

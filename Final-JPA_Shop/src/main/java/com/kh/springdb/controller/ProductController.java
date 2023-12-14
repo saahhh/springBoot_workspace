@@ -48,8 +48,8 @@ public class ProductController {
 	
 	//댓글 작성하기 위한 PostMapping
 	@PostMapping("/addComment")
-	public String addComment(@RequestParam int productId, @RequestParam String content) {
-		commentService.addComment(productId, content);
+	public String addComment(@RequestParam int productId, @RequestParam String commentContent) {
+		commentService.addComment(productId, commentContent);
 		return "redirect:/product/detail/" + productId;
 	}
 	

@@ -25,4 +25,6 @@ public class UserCreateForm {
 	@NotEmpty(message="이메일은 필수입니다.")
 	@Email
 	private String email;
+	
+	private String isRole;
 }

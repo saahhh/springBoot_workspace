@@ -33,4 +33,11 @@ public class CommentService {
 		
 	}
 	
+	public void deleteComment(Long id) {
+		commentRepository.deleteById(id);
+	}
+	
+//	public void updateComment(Long id, String content) {
+//		commentRepository.updateComment(id, content);
+//	}
 }

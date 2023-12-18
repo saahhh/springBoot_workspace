@@ -53,6 +53,20 @@ public class ProductController {
 		return "redirect:/product/detail/" + productId;
 	}
 	
+
+	//@PostMapping("/updateComment/{id}")
+	//public String updateComment(@PathVariable Long id){
+	//	commentService.updateComment(id);
+	//	return "redirect:/";
+	//}
+	//
+	
+	@PostMapping("/deleteComment/{id}")
+	public String deleteComment(@PathVariable Long id) {
+		commentService.deleteComment(id);
+		return "redirect:/";
+	}
+	
 	
 	//상품 전체 목록 페지이로 이동하기위한 GetMapping
 	/*
@@ -79,7 +93,7 @@ public class ProductController {
 		return "redirect:/"; //상품 리스트 페이지로 변경해서 상품 등록 후 이동하는 경로를 바꿔줄 수 있음
 	}
 	
-	//상품 클릭헀을 때 상세보기 메서드
+	//상품 클릭헀을 때 상세보기 메서드/
 	@GetMapping("/product/detail/{id}")
 	public String productDetail(@PathVariable("id") int id, Model model) {
 		//상세보기를 검색할 조건

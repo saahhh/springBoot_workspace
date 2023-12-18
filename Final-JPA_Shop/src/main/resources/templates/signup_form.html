@@ -9,15 +9,18 @@
 			<h4>회원가입</h4>
 		</div>
 		<form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">	
-				
+				<label for="isRole">가입자 유형 선택</label>
+				<select th:field="*{isRole}">
+					<option value="ADMIN">판매자</option>
+					<option value="USER">소비자</option>
+				</select>
+				<!--	
+					<label>판매자인지 소비자인지 체크하기</label><br>
+					<input type="radio" id="isRole" name="isRole" value="ADMIN" />판매자<br>
+					<input type="radio" id="isRole" name="isRole" value="USER" />소비자<br>
+				-->	
 				<div>
-					<label for="isRole">가입자 선택</label>
-					<input type="radio" th:field="*{isRole}" value="ADMIN" />관리자
-					
-				</div>
-			
-				<div>
-					<label>사용자ID</label>
+					<label for="username">사용자ID</label>
 					<input type="text" th:field="*{username}" />
 				</div>
 				<div>

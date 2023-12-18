@@ -34,7 +34,7 @@ public class UserController {
 			bindingResult.rejectValue("password2", "passwordInCorrect", "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
 		}
 		userService.createUser(userCreateForm.getUsername(), userCreateForm.getPassword1(), userCreateForm.getEmail());
-		return "redircet:/";
+		return "redirect:/";
 	}
 	
 	//로그인

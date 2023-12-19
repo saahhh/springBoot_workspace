@@ -7,11 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.springdb.model.Comment;
 import com.kh.springdb.model.Product;
 import com.kh.springdb.service.CommentService;
 import com.kh.springdb.service.ProductService;
@@ -54,19 +56,34 @@ public class ProductController {
 	}
 	
 
-	//@PostMapping("/updateComment/{id}")
-	//public String updateComment(@PathVariable Long id){
-	//	commentService.updateComment(id);
-	//	return "redirect:/";
-	//}
-	//
+	@PostMapping("/updateComment/{id}")
+	public String updateComment(@PathVariable Long id, @ModelAttribute Comment comment) {
+		comment.setId(id);
+		commentService.save(comment);
+		return "redirect:/";
+	}
+	
+	/*
+	@GetMapping("/updateComment/{id}")
+	public String displayupdateComment(@PathVariable Long id, Model model) {
+		Comment comment = commentService.save(comment);
+		model.addAttribute(comment);
+		return "redirect:/";
+	}*/
 	
 	@PostMapping("/deleteComment/{id}")
-	public String deleteComment(@PathVariable Long id) {
+	public String deleteComment(@RequestParam Long id) {
 		commentService.deleteComment(id);
 		return "redirect:/";
 	}
 	
+	/*
+	@GetMapping("/deleteComment/{id}")
+	public String deleteComment(@PathVariable("id") Long id, int productId) {
+		commentService.deleteComment(id, productId);
+		return "redirect:/product/detail/" + productId; 
+	}
+	*/
 	
 	//상품 전체 목록 페지이로 이동하기위한 GetMapping
 	/*
@@ -105,5 +122,5 @@ public class ProductController {
 		model.addAttribute("product", product);
 		return "productDetail";
 	}
-	
+
 }

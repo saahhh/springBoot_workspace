@@ -70,7 +70,8 @@ public class Product {
 		아래 어노테이션 방식을 사용한다
 		새로운 레코드가 삽입될 때 마다 데이터베이스가 자동으로 기본키의 값을 증가시킨다
 		
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //일반적으로 시퀀스와 같은 것
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+		기본 키 생성을 데이터베이스에 위임한다. 
 				
 */
  

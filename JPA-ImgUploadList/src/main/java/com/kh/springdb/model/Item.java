@@ -66,3 +66,14 @@ public class Item {
 	//판매자가 누구인지, 장바구니에 어떤 아이템이 들어가져 있는지는 아직 작성하지 않음
 	
 }
+
+
+
+/*
+ JPA
+model : Item Cart CartItem Order (+Option : OrderItem)
+jpaRepository : Item Cart CartItem Order OrderItem
+service : Item Cart CartItem Order OrderItem
+controller : Cart(장바구니, 주문, 결제) Item(상품 상품리스트 수정)
+view : 메인페이지, 장바구니페이지, 상품리스트, 상품 상세보기, 결제 및 주문하기
+ */

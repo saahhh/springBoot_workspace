@@ -69,7 +69,7 @@ public class Board {
 */
 
 
-//@GeneratedValue = 트리거
+
 
 /*
  * 시퀀스

@@ -44,10 +44,12 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	//post -> insert update
+	//login은 select
 	@GetMapping("/login")
 	public String login() {
 		return "login_form";
 	}
-	
+	//비밀번호 찾기의 비밀번호 변경은 update
 }
 

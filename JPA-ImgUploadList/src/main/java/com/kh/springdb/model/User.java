@@ -25,6 +25,7 @@ import lombok.Setter;
 
 */
 public class User {
+	
 	/*
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="user_seq")
@@ -64,5 +65,6 @@ public class User {
 	
 	//구매자가 사고싶은 내역의 장바구니
 	//Cart라는 장바구니를 이용해서 장바구니에 아이템을 담을 예정
+	
 	*/
 }

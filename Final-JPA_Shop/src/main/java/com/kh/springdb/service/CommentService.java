@@ -1,5 +1,7 @@
 package com.kh.springdb.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,16 @@ public class CommentService {
 	public void deleteComment(Long id) {
 		commentRepository.deleteById(id);
 	}
+
+
+	public Optional<Comment> getCommentById(Long id) {
+		return commentRepository.findById(id);
+	}
+	
+	public void save(Comment comment) {
+		commentRepository.save(comment);
+	}
+
 	
 //	public void updateComment(Long id, String content) {
 //		commentRepository.updateComment(id, content);

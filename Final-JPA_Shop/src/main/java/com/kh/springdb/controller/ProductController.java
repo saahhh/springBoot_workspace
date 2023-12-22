@@ -1,6 +1,7 @@
 package com.kh.springdb.controller;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -54,22 +55,21 @@ public class ProductController {
 		commentService.addComment(productId, commentContent);
 		return "redirect:/product/detail/" + productId;
 	}
-	
 
+	
 	@PostMapping("/updateComment/{id}")
-	public String updateComment(@PathVariable Long id, @ModelAttribute Comment comment) {
-		comment.setId(id);
+	public String updateComment(@ModelAttribute Comment comment) {
 		commentService.save(comment);
 		return "redirect:/";
 	}
 	
-	/*
 	@GetMapping("/updateComment/{id}")
 	public String displayupdateComment(@PathVariable Long id, Model model) {
-		Comment comment = commentService.save(comment);
-		model.addAttribute(comment);
+		Optional<Comment> comment = commentService.getCommentById(id);
+		comment.ifPresent(value -> model.addAttribute("comment", value));
 		return "redirect:/";
-	}*/
+	}
+	
 	
 	@PostMapping("/deleteComment/{id}")
 	public String deleteComment(@RequestParam Long id) {

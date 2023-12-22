@@ -45,7 +45,7 @@
 
 		<!-- <button type="submit"><a th:href="@{/deleteComment/{id}(id=${comment.id}, productId=${product.id})}">x</a></button> -->
 
-		
+
 		<form th:action="@{'/updateComment/' + ${comment.id}}" method="post">
 			<input type="hidden" name="id" th:value="${comment.id}" />
 			<label>댓글 수정</label>
@@ -66,14 +66,3 @@
 </body>
 
 </html>
-
-<!--
-			</form>		
-				<form th:action="@{/updateComment/{commentId}}" th:if="${comment != null}" method="post">
-			    <input type="hidden" name="commentId" th:value="${comment.id}"/>
-			    <label>댓글 수정</label>
-			    <input type="text" name="commentContent" th:value="${comment.content}"/>
-			    <button type="submit">댓글 수정하기</button>
-			</form>
-			
--->
